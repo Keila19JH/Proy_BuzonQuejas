@@ -72,9 +72,11 @@
             <input type = "text" class = "form-control" name = "name_municipio" id = "name_municipio" placeholder = "ej: Ixtapaluca">
         </div>
 
-        <div class = "mb-2">
-            <label for = "name_colonia">Nombre de la colonia:</label>
-            <input type = "text" class = "form-control" name = "name_colonia" id = "name_colonia" placeholder = "ej: San Francisco">
+        <div class="mb-2">
+            <label for="name_colonia">Nombre de la colonia:</label>
+            <select class="form-control" name="name_colonia" id="name_colonia">
+                <option value="">Seleccione una colonia</option>
+            </select>
         </div>
 
 
@@ -211,6 +213,61 @@
                 picker.subscribe(tempusDominus.Namespace.events.change, function ( event ){
                 picker.hide();
                 });
+            });
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('name_postalCode').addEventListener('input', function() {
+                    const postalCode = this.value;
+
+                        if (postalCode.length === 5) {
+                            // Construcción del endpoint dinámico
+                            const metodo =   'info_cp';
+                            const variable = 'simplified';
+                            const token = '010f9a57-66a1-46f4-a2ab-670805d5c420'; 
+                            const endpoint = `https://api.copomex.com/query/${metodo}/${postalCode}?type=${variable}&token=${token}`;
+
+                            // Llamada a la API para obtener los datos del CP
+                            fetch(endpoint)
+                            .then(response => {
+                            
+                                if (!response.ok) {
+                                    throw new Error('El servidor no esta respondiendo, intentalo más tarde.');
+                                }
+                                return response.json(); 
+                            })
+
+                            .then(data => {
+
+                                if (data.response) { 
+
+                                    const info = data.response;
+                                    document.getElementById('name_estado').value = info.estado;
+                                    document.getElementById('name_municipio').value = info.municipio;
+
+                                    const asentamientoSelect = document.getElementById('name_colonia');
+                                    asentamientoSelect.innerHTML = ''; // Limpiamos cualquier opción previa
+                                        
+                                    const defaultOption = document.createElement('option');
+                                    defaultOption.value = '';
+                                    defaultOption.textContent = 'Seleccione una colonia';
+                                    asentamientoSelect.appendChild(defaultOption);
+                                    
+                                    info.asentamiento.forEach(asentamiento => {
+                                        const option = document.createElement('option');
+                                        option.value = asentamiento;
+                                        option.textContent = asentamiento;
+                                        asentamientoSelect.appendChild(option);
+                                    });
+                                    } else {
+                                        alert('Código postal no encontrado');
+                                    }
+                                        console.log(data); 
+                                        console.log(data.response);
+                            }).catch(error => console.error('Error al consultar la API:', error));
+                        };
+                    });
             });
         </script>
 
