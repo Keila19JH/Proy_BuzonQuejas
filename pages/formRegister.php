@@ -55,7 +55,28 @@
             <input type = "text" class = "form-control" name = "phoneNumber_patient" id = "phoneNumber_patient" placeholder = "ej: 5549890612">
         </div>
 
-    
+
+
+        <div class = "mb-2">
+            <label for = "name_postalCode">Número postal:</label>
+            <input type = "text" class = "form-control" name = "name_postalCode" id = "name_postalCode" placeholder = "ej: 56530">
+        </div>
+
+        <div class = "mb-2">
+            <label for = "name_estado">Nombre del estado:</label>
+            <input type = "text" class = "form-control" name = "name_estado" id = "name_estado" placeholder = "ej: EDOMEX">
+        </div>
+
+        <div class = "mb-2">
+            <label for = "name_municipio">Nombre del municipio:</label>
+            <input type = "text" class = "form-control" name = "name_municipio" id = "name_municipio" placeholder = "ej: Ixtapaluca">
+        </div>
+
+        <div class = "mb-2">
+            <label for = "name_colonia">Nombre de la colonia:</label>
+            <input type = "text" class = "form-control" name = "name_colonia" id = "name_colonia" placeholder = "ej: San Francisco">
+        </div>
+
 
         <div class = "mb-2">
             <label for = "name_street">Nombre de la calle:</label>
@@ -238,6 +259,10 @@
                         lastName_patient: $( '#lastName_patient' ).val(),
                         mother_LastName_patient: $( '#mother_LastName_patient' ).val(),
                         phoneNumber_patient:     $( '#phoneNumber_patient' ).val(),
+                        name_postalCode:         $( '#name_postalCode').val(),
+                        name_estado:             $( '#name_estado' ).val(),
+                        name_municipio:          $( '#name_municipio' ).val(),
+                        name_colonia: $( '#name_colonia' ).val(),
                         name_street:      $( '#name_street' ).val(),
                         number_int:       $( '#number_int' ).val(),
                         number_ext:       $( '#number_ext' ).val(),
@@ -309,6 +334,10 @@
                         lastName_patient: $( '#lastName_patient' ).val(),
                         mother_LastName_patient: $( '#mother_LastName_patient' ).val(),
                         phoneNumber_patient:     $( '#phoneNumber_patient' ).val(),
+                        name_postalCode:         $( '#name_postalCode').val(),
+                        name_estado:             $( '#name_estado' ).val(),
+                        name_municipio:          $( '#name_municipio' ).val(),
+                        name_colonia: $( '#name_colonia' ).val(),
                         name_street:      $( '#name_street' ).val(),
                         number_int:       $( '#number_int' ).val(),
                         number_ext:       $( '#number_ext' ).val(),
@@ -327,6 +356,10 @@
                         || !data.lastName_patient
                         || !data.mother_LastName_patient 
                         || !data.phoneNumber_patient
+                        || !data.name_postalCode
+                        || !data.name_estado
+                        || !data.name_municipio
+                        || !data.name_colonia
                         || !data.name_street
                         || !data.number_int
                         || !data.number_ext

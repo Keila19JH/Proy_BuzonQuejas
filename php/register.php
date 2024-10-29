@@ -15,6 +15,10 @@ if (isset( $_POST[ 'name_patient' ] ) &&
     isset( $_POST[ 'lastName_patient' ] ) &&
     isset( $_POST[ 'mother_LastName_patient' ] ) &&
     isset( $_POST[ 'phoneNumber_patient' ] ) &&
+    isset( $_POST[ 'name_postalCode' ] ) &&
+    isset( $_POST[ 'name_estado' ] ) &&
+    isset( $_POST[ 'name_municipio' ] ) &&
+    isset( $_POST[ 'name_colonia' ] ) &&
     isset( $_POST[ 'name_street' ] ) &&
     isset( $_POST[ 'number_int' ] ) &&
     isset( $_POST[ 'number_ext' ] ) &&
@@ -33,6 +37,10 @@ if (isset( $_POST[ 'name_patient' ] ) &&
         $_POST[ 'lastName_patient' ],
         $_POST[ 'mother_LastName_patient' ],
         $_POST[ 'phoneNumber_patient' ],
+        $_POST[ 'name_postalCode' ],
+        $_POST[ 'name_estado' ],
+        $_POST[ 'name_municipio' ],
+        $_POST[ 'name_colonia' ],
         $_POST[ 'name_street' ],
         $_POST[ 'number_int' ],
         $_POST[ 'number_ext' ],
@@ -58,6 +66,10 @@ if (isset( $_POST[ 'name_patient' ] ) &&
         $lastName_patient        = mysqli_real_escape_string( $connection, trim( $_POST[ 'lastName_patient' ] ) );
         $mother_LastName_patient = mysqli_real_escape_string( $connection, trim( $_POST[ 'mother_LastName_patient' ] ) );
         $phoneNumber_patient     = mysqli_real_escape_string( $connection, trim( $_POST[ 'phoneNumber_patient' ] ) );
+        $name_postalCode         = mysqli_real_escape_string( $connection, trim( $_POST[ 'name_postalCode' ] ) );
+        $name_estado             = mysqli_real_escape_string( $connection, trim( $_POST[ 'name_estado' ] ) );
+        $name_municipio          = mysqli_real_escape_string( $connection, trim( $_POST[ 'name_municipio' ] ) );
+        $name_colonia            = mysqli_real_escape_string( $connection, trim( $_POST[ 'name_colonia' ] ) ); 
         $name_street             = mysqli_real_escape_string( $connection, trim( $_POST[ 'name_street' ] ) );
         $number_int              = mysqli_real_escape_string( $connection, trim( $_POST[ 'number_int' ] ) );
         $number_ext              = mysqli_real_escape_string( $connection, trim( $_POST[ 'number_ext' ] ) );
@@ -79,8 +91,9 @@ if (isset( $_POST[ 'name_patient' ] ) &&
         mysqli_begin_transaction( $connection );
 
         try {
-            $query_address = "INSERT INTO addresses (name_street, number_int, number_ext) 
-                              VALUES ('$name_street', '$number_int', '$number_ext')";
+            $query_address = "INSERT INTO addresses(name_street, number_int, number_ext, number_postalCode, name_state, name_municipio, name_colonia) 
+                              VALUES ('$name_street','$number_int','$number_ext','$name_postalCode','$name_estado','$name_municipio','$name_colonia')";
+            
                               
             if ( !mysqli_query( $connection, $query_address ) ) {
                 throw new Exception( "Error en la consulta de address: " . mysqli_error( $connection ) );
