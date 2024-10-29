@@ -1,0 +1,15 @@
+#datetimepicker {
+    position: relative;
+}
+
+.tempus-dominus-widget {
+    z-index: 1050; /*Asegura que el calendario esté sobre otros elementos*/
+    position: absolute; /*Calendario en una posición específica*/
+    left: 39px; /*Mueve el calendario hacia la derecha*/
+    top: 798px; /*Acerca el calendario al campo de entrada cerca del ícono*/
+    transform: translateX(10px); /*Posición horizontal*/
+}
+
+.input-group {
+    position: relative; /*Asegura que los elementos internos se posicionen de forma correcta*/
+}

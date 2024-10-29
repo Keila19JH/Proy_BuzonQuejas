@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #ffffff;
+}
+.card-img-top{
+    border-radius: 50px;
+    padding: 20px; 
+}
+.card{
+    border: 30px;
+    box-shadow: rgba(158, 5, 69, 0.25) 0px 14px 28px, rgba(114, 4, 72, 0.336) 0px 10px 10px;
+}
+.card-body{
+    padding: 20px;
+    margin-top: -40px;
+    background-color: #ffffff;
+}
+h5{
+    color: blueviolet;
+}
+
+.ort{
+    text-align: center;
+}
+.navbar-custom {
+    background-color: #0C231E;
+}
